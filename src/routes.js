@@ -8,5 +8,6 @@ routes.get("/", (req, res) => {
 });
 
 routes.get('/cards', CardsController.list);
+routes.post('/cards', CardsController.create);
 
 module.exports = routes;

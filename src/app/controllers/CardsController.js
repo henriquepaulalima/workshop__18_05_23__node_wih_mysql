@@ -14,14 +14,19 @@ class CardsController {
       const cardList = await cards.find();
       response.json(cardList);
     } catch (error) {
-      response.json({error: 'Error listing cards.'})
+      response.json({ error: 'Error listing cards.' })
     }
   }
 
   async create(request, response) {
-    /**
-     * @todo create a card
-     */
+    const { name, type, desc, atk, def } = request.body;
+    const card = { name, type, desc, atk, def, };
+    try {
+      const result = await cards.create(card);
+      return response.json(result);
+    } catch (error) {
+      return response.json({ error: 'Error creating card.' });
+    }
   }
 
   async update(request, response) {

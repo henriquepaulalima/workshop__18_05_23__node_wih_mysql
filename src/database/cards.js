@@ -17,10 +17,12 @@ async function findOne() {
    */
 }
 
-async function create() {
-  /**
-   * @todo create a card
-   */
+async function create({ name, type, desc, atk, def }) {
+  const query = "INSERT INTO cards(`name`, `type`, `desc`, `atk`, `def`) values (?, ?, ?, ?, ?)";
+  const result = await db.query(query, [name, type, desc, atk, def]);
+
+  const message = result.affectedRows ? 'Card created!' : `Error creating card.`;
+  return { message };
 }
 
 async function update() {

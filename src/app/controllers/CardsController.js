@@ -30,9 +30,15 @@ class CardsController {
   }
 
   async update(request, response) {
-    /**
-     * @todo update an specific card
-     */
+    const { id } = request.params;
+    const { name, type, desc, atk, def } = request.body;
+    const updateData = { name, type, desc, atk, def, };
+    try {
+      const result = await cards.update(id, updateData);
+      return response.json(result);
+    } catch (error) {
+      return response.json({ error: 'Error updating card.' })
+    }
   }
 
   async delete(request, response) {

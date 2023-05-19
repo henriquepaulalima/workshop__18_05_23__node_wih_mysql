@@ -25,10 +25,12 @@ async function create({ name, type, desc, atk, def }) {
   return { message };
 }
 
-async function update() {
-  /**
-   * @todo update an specific card
-   */
+async function update(id, { name, type, desc, atk, def }) {
+  const query = "UPDATE cards SET `name`=?, `type`=?, `desc`=?, `atk`=?, `def`=? WHERE `id`=?";
+  const result = await db.query(query, [name, type, desc, atk, def, id]);
+
+  const message = result.affectedRows ? 'Card updated!' : 'Error updating card.';
+  return { message };
 }
 
 async function remove(id) {

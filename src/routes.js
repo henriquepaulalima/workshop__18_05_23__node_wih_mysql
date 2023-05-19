@@ -9,5 +9,6 @@ routes.get("/", (req, res) => {
 
 routes.get('/cards', CardsController.list);
 routes.post('/cards', CardsController.create);
+routes.put('/cards/:id', CardsController.update);
 
 module.exports = routes;

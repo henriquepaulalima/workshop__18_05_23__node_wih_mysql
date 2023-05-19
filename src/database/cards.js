@@ -2,9 +2,13 @@ const db = require("./db");
 const helper = require("./helper");
 
 async function find() {
-  /**
-   * @todo get all cards
-   */
+  const query = `SELECT * FROM cards LIMIT 100`;
+  const rows = await db.query(query);
+  const data = helper.emptyOrRows(rows);
+
+  return {
+    data,
+  };
 }
 
 async function findOne() {

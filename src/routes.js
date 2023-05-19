@@ -1,4 +1,5 @@
-const { Router } = require("express");
+const { Router, response } = require("express");
+const CardsController = require('./app/controllers/CardsController');
 
 const routes = Router();
 
@@ -6,8 +7,6 @@ routes.get("/", (req, res) => {
   res.json({ message: "Hello PUC-MG!" });
 });
 
-/**
- * @todo Create routes
- */
+routes.get('/cards', CardsController.list);
 
 module.exports = routes;

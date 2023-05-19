@@ -10,9 +10,12 @@ class CardsController {
   }
 
   async list(request, response) {
-    /**
-     * @todo list all cards
-     */
+    try {
+      const cardList = await cards.find();
+      response.json(cardList);
+    } catch (error) {
+      response.json({error: 'Error listing cards.'})
+    }
   }
 
   async create(request, response) {
